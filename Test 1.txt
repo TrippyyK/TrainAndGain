@@ -1,0 +1,40 @@
+```bash
+#!/bin/bash
+
+# Initialize scores
+player1_score=
+player2_score=
+
+# Set the winning score
+winning_score=11
+
+# Function to display the current score
+display_score() {
+    echo "Score: Player 1: $player1_score - Player 2: $player2_score"
+}
+
+# Game loop
+while [[ $player1_score -lt $winning_score && $player2_score -lt $winning_score ]]; do
+    display_score
+    echo "Enter the player who scored (1 for Player 1, 2 for Player 2): "
+    read player
+
+    if [[ $player -eq 1 ]]; then
+        player1_score=$((player1_score + 1))
+    elif [[ $player -eq 2 ]]; then
+        player2_score=$((player2_score + 1))
+    else
+        echo "Invalid input. Please enter 1 or 2."
+    fi
+done
+
+# Display the final score
+display_score
+
+# Determine the winner
+if [[ $player1_score -ge $winning_score ]]; then
+    echo "Player 1 wins!"
+else
+    echo "Player 2 wins!"
+fi
+```
